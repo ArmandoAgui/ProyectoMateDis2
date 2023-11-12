@@ -18,11 +18,11 @@ boton.addEventListener("click", function () {
     var literal = document.getElementById("miDropdown");
     var valorSeleccionado = literal.value;
     if (valorSeleccionado == 1) {
-        alert((Positivos / nVeces) + " probabilidad de que sea Positivo");
+        alert(((Positivos / nVeces) * 100).toFixed(4) + " probabilidad de que sea Positivo");
     } else if (valorSeleccionado == 2) {
-        alert((Nulos / nVeces) + " probabilidad de que sea Nulo");
+        alert(((Nulos / nVeces) * 100).toFixed(4) + " probabilidad de que sea Nulo");
     }
-    grafico1(Positivos, Negativos, Nulos, nVeces);
+    grafico1(Positivos.toFixed(4), Negativos.toFixed(4), Nulos.toFixed(4), nVeces);
     // Puedes realizar otras acciones aquí
 });
 
@@ -66,36 +66,36 @@ function producto() {
 
 // Función para mostrar las ventas por mes del año actual en un gráfico de barras.
 function grafico1(pos, neg, nulos, total) {
-    
-     // Datos para el gráfico de barras
-  var datos = {
-    labels: ["Positivos %" + (pos / total)*100 , "Nulos %" + (nulos / total)*100 , "Negativos %" + (neg / total)*100],
-    datasets: [{
-      label: 'Total de resultados = ' + total,
-      backgroundColor: 'rgba(34, 144, 255, 100)',
-      borderColor: "white",
-      borderWidth: 1,
-      data: [pos, nulos, neg]
-    }]
-  };
 
-  // Configuración del gráfico
-  var configuracion = {
-    type: 'bar',
-    data: datos,
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
+    // Datos para el gráfico de barras
+    var datos = {
+        labels: ["Positivos " + ((pos / total) * 100).toFixed(4) + "%", "Nulos " + ((nulos / total) * 100).toFixed(4) + "%", "Negativos " + ((neg / total) * 100).toFixed(4) + "%"],
+        datasets: [{
+            label: 'Total de resultados = ' + total,
+            backgroundColor: 'rgba(34, 144, 255, 100)',
+            borderColor: "white",
+            borderWidth: 1,
+            data: [pos, nulos, neg]
+        }]
+    };
+
+    // Configuración del gráfico
+    var configuracion = {
+        type: 'bar',
+        data: datos,
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
         }
-      }
-    }
-  };
+    };
 
-  // Obtén el contexto del canvas
-  var contexto = document.getElementById('chart1').getContext('2d');
+    // Obtén el contexto del canvas
+    var contexto = document.getElementById('chart1').getContext('2d');
 
-  // Crea el gráfico de barras
-  var miGrafico = new Chart(contexto, configuracion);
+    // Crea el gráfico de barras
+    var miGrafico = new Chart(contexto, configuracion);
 }
 
