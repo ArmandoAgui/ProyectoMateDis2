@@ -31,7 +31,7 @@ function obtenerNumeroRandom(tipo) {
     if (tipo == 1) {
         var numeroAleatorio;
         do {
-            numeroAleatorio = Math.floor(Math.random() * 15) - 8;
+            numeroAleatorio = Math.floor(Math.random() * 14) - 8;
         } while (numeroAleatorio === 0);
         return numeroAleatorio;
     }
