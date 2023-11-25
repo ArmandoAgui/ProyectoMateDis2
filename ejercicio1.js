@@ -39,7 +39,7 @@ function obtenerNumeroRandom(tipo) {
     else if (tipo == 2) {
         var numRandom = 0, min, max;
         min = Math.ceil(-8);
-        max = Math.floor(6);
+        max = Math.floor(5);
         numRandom = Math.floor(Math.random() * (max - min + 1) + min);
         return numRandom;
     }
